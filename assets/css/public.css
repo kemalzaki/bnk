@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #0f172a; /* Slate 900 */
+    --accent-color: #0284c7;  /* Sky 600 */
+    --accent-hover: #0369a1;  /* Sky 700 */
+    --secondary-color: #0f766e; /* Teal 700 */
+    --bg-light: #f8fafc;      /* Slate 50 */
+    --bg-white: #ffffff;
+    --text-main: #334155;     /* Slate 700 */
+    --text-muted: #64748b;    /* Slate 500 */
+    --border-color: #e2e8f0;  /* Slate 200 */
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --hover-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+/* Navbar styles */
+.public-navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    transition: var(--transition-smooth);
+}
+
+.public-navbar .navbar-brand {
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+}
+
+.public-navbar .nav-link {
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    transition: var(--transition-smooth);
+}
+
+.public-navbar .nav-link:hover, 
+.public-navbar .nav-item.active .nav-link {
+    color: var(--accent-color) !important;
+    background-color: rgba(2, 132, 199, 0.08);
+}
+
+/* Jumbotron/Hero section */
+.hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Custom premium buttons */
+.btn-premium-primary {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium-primary:hover {
+    background-color: var(--accent-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.btn-premium-outline {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    font-weight: 500;
+    padding: 8px 22px;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium-outline:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Cards style */
+.premium-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-smooth);
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: rgba(2, 132, 199, 0.3);
+}
+
+.premium-card img {
+    transition: var(--transition-smooth);
+}
+
+.premium-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Statistic item */
+.stat-item {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+/* Footer style */
+.public-footer {
+    background-color: var(--primary-color);
+    color: #94a3b8; /* Slate 400 */
+    padding: 80px 0 30px 0;
+    border-top: 1px solid #1e293b;
+}
+
+.public-footer h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.public-footer a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.public-footer a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* Micro-animations */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
