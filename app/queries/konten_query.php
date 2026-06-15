@@ -136,7 +136,7 @@ function get_profil_bnk($conn) {
     
     // Jika tabel kosong, insert data awal/kosong sesuai dengan 7 komponen profil di SKPL
     if (mysqli_num_rows($result) == 0) {
-        $insert_query = "INSERT INTO tb_profil_bnk (sambutan, tupoksi, kondisi_umum, renstra, struktur_organisasi, visi, misi,) 
+        $insert_query = "INSERT INTO tb_profil_bnk (sambutan, tupoksi, kondisi_umum, renstra, struktur_organisasi, visi, misi) 
                          VALUES ('-', '-', '-', '-', '-', '-', '-')";
         mysqli_query($conn, $insert_query);
         
