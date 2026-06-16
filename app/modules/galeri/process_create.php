@@ -39,8 +39,15 @@ if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
     }
     
     $ext = pathinfo($_FILES['gambar']['name'], PATHINFO_EXTENSION);
+
+    $target_dir = PUBLIC_PATH . '/../assets/images/galeri/';
+    
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0775, true);
+    }
+
     $gambar = 'galeri_' . time() . '.' . $ext;
-    $upload_path = PUBLIC_PATH . '/../assets/images/galeri/' . $gambar;
+    $upload_path = $target_dir . $gambar;
     
     if (!move_uploaded_file($file_tmp, $upload_path)) {
         redirect_with_message('create.php', 'error', 'Gagal mengupload gambar.');

@@ -48,8 +48,15 @@ if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === UPLOAD_ERR_
     }
     
     $ext = pathinfo($_FILES['thumbnail']['name'], PATHINFO_EXTENSION);
+
+    $target_dir = PUBLIC_PATH . '/../assets/images/berita/';
+    
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0775, true);
+    }
+
     $thumbnail = 'berita_' . time() . '.' . $ext;
-    $upload_path = PUBLIC_PATH . '/../assets/images/berita/' . $thumbnail;
+    $upload_path = $target_dir . $thumbnail;
     
     if (!move_uploaded_file($file_tmp, $upload_path)) {
         redirect_with_message('create.php', 'error', 'Gagal mengupload gambar.');
