@@ -16,3 +16,8 @@ RUN chown -R www-data:www-data assets/images assets/dokumen \
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN echo "date.timezone = Asia/Jakarta" > /usr/local/etc/php/conf.d/timezone.ini
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
