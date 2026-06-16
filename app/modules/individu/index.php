@@ -29,6 +29,7 @@ include APP_PATH . '/templates/navbar.php';
                         <th>NIK</th>
                         <th>Nama Lengkap</th>
                         <th>Umur</th>
+                        <th>Kategori Usia</th>
                         <th>L/P</th>
                         <th width="15%" class="text-center">Aksi</th>
                     </tr>
@@ -45,6 +46,18 @@ include APP_PATH . '/templates/navbar.php';
                         <td><strong><?php echo htmlspecialchars($row['nik']); ?></strong></td>
                         <td><?php echo htmlspecialchars($row['nama']); ?></td>
                         <td><?php echo $umur; ?> Tahun</td>
+                        <td>
+                            <?php 
+                            $category = get_age_category($umur);
+                            $badge_class = 'bg-secondary';
+                            if ($category === 'Balita') $badge_class = 'bg-info text-dark';
+                            elseif ($category === 'Anak-anak') $badge_class = 'bg-warning text-dark';
+                            elseif ($category === 'Remaja') $badge_class = 'bg-primary';
+                            elseif ($category === 'Dewasa') $badge_class = 'bg-success';
+                            elseif ($category === 'Lansia') $badge_class = 'bg-danger';
+                            ?>
+                            <span class="badge <?php echo $badge_class; ?>"><?php echo $category; ?></span>
+                        </td>
                         <td><?php echo ($row['jenis_kelamin'] == 'L') ? 'Laki-laki' : 'Perempuan'; ?></td>
                         <td class="text-center">
                             <a href="edit.php?nik=<?php echo urlencode($row['nik']); ?>" class="btn btn-sm btn-info text-white" title="Edit"><i class="fas fa-edit"></i></a>
@@ -56,7 +69,7 @@ include APP_PATH . '/templates/navbar.php';
                     else: 
                     ?>
                     <tr>
-                        <td colspan="6" class="text-center">Tidak ada data individu ditemukan.</td>
+                        <td colspan="7" class="text-center">Tidak ada data individu ditemukan.</td>
                     </tr>
                     <?php endif; ?>
                 </tbody>

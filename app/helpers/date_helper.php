@@ -15,6 +15,15 @@ function calculate_age($birth_date) {
     return $diff->y;
 }
 
+function get_age_category($age) {
+    if ($age < 0) return 'Tidak Valid';
+    if ($age <= 5) return 'Balita';
+    if ($age <= 11) return 'Anak-anak';
+    if ($age <= 18) return 'Remaja';
+    if ($age <= 59) return 'Dewasa';
+    return 'Lansia';
+}
+
 function validate_future_date($date) {
     $d = new DateTime($date);
     $today = new DateTime('today');
