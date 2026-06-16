@@ -130,23 +130,33 @@ function delete_buku_tamu($conn, $id) {
 
 // === PROFIL BNK ===
 function get_profil_bnk($conn) {
-    // Profil BNK biasanya hanya 1 baris (id=1)
-    $query = "SELECT * FROM tb_profil_bnk LIMIT 1";
+    // Mengambil data versi terbaru berdasarkan id_profil terbesar (Memenuhi syarat riwayat versi SKPL)
+    $query = "SELECT * FROM tb_profil_bnk ORDER BY id_profil DESC LIMIT 1";
     $result = mysqli_query($conn, $query);
     
-    // Jika kosong, insert data kosong
+    // Jika tabel kosong, insert data awal/kosong sesuai dengan 8 komponen profil di SKPL
     if (mysqli_num_rows($result) == 0) {
-        mysqli_query($conn, "INSERT INTO tb_profil_bnk (visi, misi, sejarah, struktur_organisasi, kontak) VALUES ('-', '-', '-', '-', '-')");
+        $insert_query = "INSERT INTO tb_profil_bnk (sambutan, tupoksi, kondisi_umum, renstra, struktur_organisasi, visi, misi, kontak) 
+                         VALUES ('-', '-', '-', '-', '-', '-', '-', '-')";
+        mysqli_query($conn, $insert_query);
+        
+        // Panggil ulang fungsi untuk mengambil data yang baru saja di-insert
         return get_profil_bnk($conn);
     }
     
     return mysqli_fetch_assoc($result);
 }
 
-function update_profil_bnk($conn, $id, $visi, $misi, $sejarah, $struktur, $kontak) {
-    $query = "UPDATE tb_profil_bnk SET visi = ?, misi = ?, sejarah = ?, struktur_organisasi = ?, kontak = ? WHERE id_profil = ?";
+function update_profil_bnk($conn, $id, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak) {
+    // Menggunakan INSERT agar data lama tidak terhapus dan tersimpan sebagai riwayat versi
+    $query = "INSERT INTO tb_profil_bnk (sambutan, tupoksi, kondisi_umum, renstra, struktur_organisasi, visi, misi, kontak) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssi", $visi, $misi, $sejarah, $struktur, $kontak, $id);
+
+    // Karena INSERT baru, kita tidak membutuhkan parameter ID di akhir, jadi tipe datanya "ssssssss" (8 string)
+    mysqli_stmt_bind_param($stmt, "ssssssss", $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak);
+    
     $success = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $success;

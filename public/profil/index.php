@@ -33,16 +33,19 @@ include APP_PATH . '/templates/public_header.php';
                             <button class="nav-link w-100 text-start active py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-sambutan" type="button"><i class="fas fa-bullhorn me-2 text-primary"></i> Sambutan Kepala</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-visi" type="button"><i class="fas fa-eye me-2 text-primary"></i> Visi & Misi</button>
+                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-tupoksi" type="button"><i class="fas fa-list-check me-2 text-primary"></i> Tupoksi</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-sejarah" type="button"><i class="fas fa-history me-2 text-primary"></i> Sejarah</button>
+                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-kondisi" type="button"><i class="fas fa-file-alt me-2 text-primary"></i> Kondisi Umum</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-renstra" type="button"><i class="fas fa-chart-line me-2 text-primary"></i> Rencana Strategis</button>
                         </li>
                         <li class="nav-item">
                             <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-struktur" type="button"><i class="fas fa-sitemap me-2 text-primary"></i> Struktur Organisasi</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-layanan" type="button"><i class="fas fa-hand-holding-heart me-2 text-primary"></i> Layanan BNK</button>
+                            <button class="nav-link w-100 text-start py-2.5 px-3 border-0" data-bs-toggle="pill" data-bs-target="#v-pills-visi" type="button"><i class="fas fa-eye me-2 text-primary"></i> Visi & Misi</button>
                         </li>
                     </ul>
                 </div>
@@ -66,8 +69,45 @@ include APP_PATH . '/templates/public_header.php';
                                 <p class="text-muted small">Kepala Badan Narkotika Kabupaten</p>
                             </div>
                             <div class="col-md-8">
-                                <p class="fst-italic">"Penyalahgunaan narkotika merupakan ancaman serius bagi masa depan generasi bangsa. Kami di Badan Narkotika Kabupaten berkomitmen penuh untuk melakukan upaya pencegahan secara masif, rehabilitasi yang ramah dan manusiawi, serta tindakan penegakan status hukum yang tegas."</p>
-                                <p>Melalui portal sistem informasi ini, kami berupaya menyediakan data yang transparan bagi publik dan sarana interaksi yang kredibel guna bersama-sama memberantas peredaran gelap narkotika di kabupaten tercinta kita.</p>
+                                <p class="fst-italic">"<?php echo nl2br(htmlspecialchars($profil['sambutan'])); ?>"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tupoksi -->
+                <div class="tab-pane fade" id="v-pills-tupoksi">
+                    <div class="premium-card p-4 p-md-5">
+                        <h3 class="fw-bold mb-4 border-bottom pb-2">Tugas Pokok & Fungsi (Tupoksi)</h3>
+                        <p class="text-dark" style="white-space: pre-wrap; line-height: 1.8;"><?php echo htmlspecialchars($profil['tupoksi']); ?></p>
+                    </div>
+                </div>
+
+                <!-- Kondisi Umum -->
+                <div class="tab-pane fade" id="v-pills-kondisi">
+                    <div class="premium-card p-4 p-md-5">
+                        <h3 class="fw-bold mb-4 border-bottom pb-2">Kondisi Umum BNK</h3>
+                        <p class="text-dark" style="white-space: pre-wrap; line-height: 1.8;"><?php echo htmlspecialchars($profil['kondisi_umum']); ?></p>
+                    </div>
+                </div>
+
+                <!-- Renstra -->
+                <div class="tab-pane fade" id="v-pills-renstra">
+                    <div class="premium-card p-4 p-md-5">
+                        <h3 class="fw-bold mb-4 border-bottom pb-2">Rencana Strategis (Renstra)</h3>
+                        <p class="text-dark" style="white-space: pre-wrap; line-height: 1.8;"><?php echo htmlspecialchars($profil['renstra']); ?></p>
+                    </div>
+                </div>
+
+                <!-- Struktur Organisasi -->
+                <div class="tab-pane fade" id="v-pills-struktur">
+                    <div class="premium-card p-4 p-md-5">
+                        <h3 class="fw-bold mb-4 border-bottom pb-2">Struktur Organisasi</h3>
+                        <div class="p-4 bg-light rounded border border-dashed text-center">
+                            <i class="fas fa-sitemap text-primary mb-3 fs-1"></i>
+                            <h5 class="fw-bold mb-3">Bagan Kepengurusan BNK</h5>
+                            <div class="text-start mx-auto d-inline-block">
+                                <p class="text-dark" style="white-space: pre-wrap; font-family: monospace; font-size: 1rem;"><?php echo htmlspecialchars($profil['struktur_organisasi']); ?></p>
                             </div>
                         </div>
                     </div>
@@ -87,28 +127,6 @@ include APP_PATH . '/templates/public_header.php';
                             <h5 class="fw-bold text-primary mb-3"><i class="fas fa-list-check me-2"></i>Misi</h5>
                             <div class="p-3 bg-light rounded border-start border-teal border-4">
                                 <p class="mb-0 text-dark" style="white-space: pre-wrap;"><?php echo htmlspecialchars($profil['misi']); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sejarah -->
-                <div class="tab-pane fade" id="v-pills-sejarah">
-                    <div class="premium-card p-4 p-md-5">
-                        <h3 class="fw-bold mb-4 border-bottom pb-2">Sejarah Singkat</h3>
-                        <p class="text-dark" style="white-space: pre-wrap; line-height: 1.8;"><?php echo htmlspecialchars($profil['sejarah']); ?></p>
-                    </div>
-                </div>
-
-                <!-- Struktur Organisasi -->
-                <div class="tab-pane fade" id="v-pills-struktur">
-                    <div class="premium-card p-4 p-md-5">
-                        <h3 class="fw-bold mb-4 border-bottom pb-2">Struktur Organisasi</h3>
-                        <div class="p-4 bg-light rounded border border-dashed text-center">
-                            <i class="fas fa-sitemap text-primary mb-3 fs-1"></i>
-                            <h5 class="fw-bold mb-3">Bagan Kepengurusan BNK</h5>
-                            <div class="text-start mx-auto d-inline-block">
-                                <p class="text-dark" style="white-space: pre-wrap; font-family: monospace; font-size: 1rem;"><?php echo htmlspecialchars($profil['struktur_organisasi']); ?></p>
                             </div>
                         </div>
                     </div>

@@ -16,18 +16,22 @@ if (!validate_csrf_token($csrf_token)) {
 }
 
 $id_profil = $_POST['id_profil'] ?? '';
+$sambutan = $_POST['sambutan'] ?? '';
+$tupoksi = $_POST['tupoksi'] ?? '';
+$kondisi_umum = $_POST['kondisi_umum'] ?? '';
+$renstra = $_POST['renstra'] ?? '';
+$struktur = $_POST['struktur_organisasi'] ?? '';
 $visi = $_POST['visi'] ?? '';
 $misi = $_POST['misi'] ?? '';
-$sejarah = $_POST['sejarah'] ?? '';
-$struktur = $_POST['struktur_organisasi'] ?? '';
 $kontak = $_POST['kontak'] ?? '';
+
 
 if (!filter_var($id_profil, FILTER_VALIDATE_INT)) {
     redirect_with_message('index.php', 'error', 'ID Profil tidak valid.');
 }
 
 $conn = get_db_connection();
-$success = update_profil_bnk($conn, $id_profil, $visi, $misi, $sejarah, $struktur, $kontak);
+$success = update_profil_bnk($conn, $id, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak);
 mysqli_close($conn);
 
 if ($success) {
