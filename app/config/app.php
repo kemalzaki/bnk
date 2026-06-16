@@ -6,8 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Konfigurasi URL dasar
-define('BASE_URL', 'http://localhost/SKPL%20WEB');
+define('BASE_URL', getenv('BASE_URL') ?: 'http://localhost/SKPL%20WEB');
 
 // Konfigurasi path
 define('APP_PATH', dirname(__DIR__));

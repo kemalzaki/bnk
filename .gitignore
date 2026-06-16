@@ -1,0 +1,21 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Docker
+.env
+
+# Assets (user-uploaded files - keep structure, ignore content)
+assets/images/*
+assets/dokumen/*
+!assets/images/.gitkeep
+!assets/dokumen/.gitkeep
+
+# Database (schema is tracked, ignore anything else)
+database/*.sql.gz
+database/*.sql.zip

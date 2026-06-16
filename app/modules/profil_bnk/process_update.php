@@ -31,7 +31,7 @@ if (!filter_var($id_profil, FILTER_VALIDATE_INT)) {
 }
 
 $conn = get_db_connection();
-$success = update_profil_bnk($conn, $id, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak);
+$success = update_profil_bnk($conn, $id_profil, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak);
 mysqli_close($conn);
 
 if ($success) {

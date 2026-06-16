@@ -1,0 +1,7 @@
+.git/
+.gitignore
+AGENTS.md
+README.md
+database/
+*.md
+node_modules/
