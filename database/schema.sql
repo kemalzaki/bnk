@@ -85,11 +85,12 @@ CREATE TABLE IF NOT EXISTS tb_buku_tamu (
 
 CREATE TABLE IF NOT EXISTS tb_profil_bnk (
     id_profil INT AUTO_INCREMENT PRIMARY KEY,
-    sambutan TEXT NULL,
-    tupoksi TEXT NULL,
-    kondisi_umum TEXT NULL,
-    renstra TEXT NULL,
+    sambutan TEXT,
+    tupoksi TEXT,
+    kondisi_umum TEXT,
+    renstra TEXT,
     struktur_organisasi TEXT,
     visi TEXT,
-    misi TEXT
+    misi TEXT,
+    kontak TEXT
 );

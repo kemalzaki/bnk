@@ -23,13 +23,15 @@ $renstra = $_POST['renstra'] ?? '';
 $struktur = $_POST['struktur_organisasi'] ?? '';
 $visi = $_POST['visi'] ?? '';
 $misi = $_POST['misi'] ?? '';
+$kontak = $_POST['kontak'] ?? '';
+
 
 if (!filter_var($id_profil, FILTER_VALIDATE_INT)) {
     redirect_with_message('index.php', 'error', 'ID Profil tidak valid.');
 }
 
 $conn = get_db_connection();
-$success = update_profil_bnk($conn, $id, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi);
+$success = update_profil_bnk($conn, $id, $sambutan, $tupoksi, $kondisi_umum, $renstra, $struktur, $visi, $misi, $kontak);
 mysqli_close($conn);
 
 if ($success) {
