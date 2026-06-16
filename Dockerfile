@@ -2,7 +2,9 @@ FROM php:8.2-apache
 
 RUN a2enmod rewrite
 
-RUN a2enmod mpm_prefork && a2dismod mpm_event
+# Fix MPM: force-remove all MPM modules, then enable only prefork
+RUN rm -f /etc/apache2/mods-enabled/mpm*.conf /etc/apache2/mods-enabled/mpm*.load \
+    && a2enmod mpm_prefork
 
 WORKDIR /var/www/html
 
