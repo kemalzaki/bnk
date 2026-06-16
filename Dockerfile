@@ -2,7 +2,7 @@ FROM php:8.2-apache
 
 RUN a2enmod rewrite
 
-RUN a2dismod mpm_event && a2enmod mpm_prefork
+RUN a2enmod mpm_prefork && a2dismod mpm_event
 
 WORKDIR /var/www/html
 
