@@ -23,7 +23,9 @@ function login_user($user_data) {
 }
 
 function logout_user() {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     session_unset();
     session_destroy();
     header("Location: " . BASE_URL . "/app/modules/auth/login.php");
