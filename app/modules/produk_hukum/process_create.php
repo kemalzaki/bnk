@@ -42,8 +42,14 @@ if (isset($_FILES['file_dokumen']) && $_FILES['file_dokumen']['error'] === UPLOA
         redirect_with_message('create.php', 'error', 'Ukuran file maksimal 5MB.');
     }
     
+    $target_dir = PUBLIC_PATH . '/../assets/dokumen/';
+    
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0775, true);
+    }
+
     $file_dokumen = 'dokumen_' . time() . '.' . $ext;
-    $upload_path = PUBLIC_PATH . '/../assets/dokumen/' . $file_dokumen;
+    $upload_path = $target_dir . $file_dokumen;
     
     if (!move_uploaded_file($file_tmp, $upload_path)) {
         redirect_with_message('create.php', 'error', 'Gagal mengupload dokumen.');
