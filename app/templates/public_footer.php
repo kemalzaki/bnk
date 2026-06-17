@@ -34,11 +34,8 @@
             </div>
             <hr class="border-secondary my-4">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
+                <div class="col-12 text-center">
                     <p class="small text-muted mb-0">&copy; <?php echo date('Y'); ?> Badan Narkotika Kabupaten. Hak Cipta Dilindungi.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-                    <span class="text-muted small">Powered by Antigravity Procedural Engine</span>
                 </div>
             </div>
         </div>
