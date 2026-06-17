@@ -10,11 +10,6 @@ Thumbs.db
 # Docker
 .env
 
-# Assets (user-uploaded files - keep structure, ignore content)
-assets/images/*
-assets/dokumen/*
-!assets/images/.gitkeep
-!assets/dokumen/.gitkeep
 
 # Database (schema is tracked, ignore anything else)
 database/*.sql.gz
